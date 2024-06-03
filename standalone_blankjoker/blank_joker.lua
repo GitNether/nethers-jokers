@@ -9,7 +9,11 @@
 ----------------------------------------------
 ------------MOD CODE -------------------------
 
-G.SHADERS['hologramv2'] = love.graphics.newShader(SMODS.current_mod.path.."/assets/shaders/".."hologramv2.fs")
+-- fix for LOVE acting up in some cases (thanks @MathIsFun)
+local shader = NFS.read(SMODS.current_mod.path.."/assets/shaders/".."hologramv2.fs")
+love.filesystem.write("temp-hologramv2.fs", shader)
+G.SHADERS['hologramv2'] = love.graphics.newShader("temp-hologramv2.fs")
+love.filesystem.remove("temp-hologramv2.fs")
 
 function is_in_your_collection(card)
     if not G.your_collection then return false end
