@@ -4,7 +4,7 @@
 --- MOD_AUTHOR: [Nether]
 --- MOD_DESCRIPTION: Add new Jokers to the game
 --- LOADER_VERSION_GEQ: 1.0.0
---- VERSION: 0.1.0
+--- VERSION: 0.2.0
 
 ----------------------------------------------
 ------------MOD CODE -------------------------
