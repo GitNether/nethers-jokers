@@ -9,6 +9,8 @@
 ----------------------------------------------
 ------------MOD CODE -------------------------
 
+G.SHADERS['hologramv2'] = love.graphics.newShader(SMODS.current_mod.path.."/assets/shaders/".."hologramv2.fs")
+
 function is_in_your_collection(card)
     if not G.your_collection then return false end
     for i = 1, 3 do
