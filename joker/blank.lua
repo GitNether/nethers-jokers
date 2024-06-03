@@ -103,31 +103,29 @@ SMODS.Joker{
         end
 
         -- calculate scoring
-        if context.joker_main then
-            if not nether_util.is_in_your_collection(card) and card.ability.extra.copied_joker then
-                local other_joker = nil
-                -- iterate over G.jokers.cards and find the joker with the same sort_id
-                for i = 1, #G.jokers.cards do
-                    if G.jokers.cards[i].sort_id == card.ability.extra.copied_joker.sort_id then
-                        other_joker = G.jokers.cards[i]
-                        set_new_joker_sprite(card, other_joker)
-                        break
-                    end
+        if not nether_util.is_in_your_collection(card) and card.ability.extra.copied_joker then
+            local other_joker = nil
+            -- iterate over G.jokers.cards and find the joker with the same sort_id
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i].sort_id == card.ability.extra.copied_joker.sort_id then
+                    other_joker = G.jokers.cards[i]
+                    set_new_joker_sprite(card, other_joker)
+                    break
                 end
-                if not other_joker then
-                    set_new_joker_sprite(card, nil)
-                    return
-                end
+            end
+            if not other_joker then
+                set_new_joker_sprite(card, nil)
+                return
+            end
 
-                context.blueprint = (context.blueprint and (context.blueprint + 1)) or 1
-                context.blueprint_card = context.blueprint_card or card
-                if context.blueprint > #G.jokers.cards + 1 then return end
-                local other_joker_ret = other_joker:calculate_joker(context)
-                if other_joker_ret then 
-                    other_joker_ret.card = context.blueprint_card or card
-                    other_joker_ret.colour = G.C.RED
-                    return other_joker_ret
-                end
+            context.blueprint = (context.blueprint and (context.blueprint + 1)) or 1
+            context.blueprint_card = context.blueprint_card or card
+            if context.blueprint > #G.jokers.cards + 1 then return end
+            local other_joker_ret = other_joker:calculate_joker(context)
+            if other_joker_ret then 
+                other_joker_ret.card = context.blueprint_card or card
+                other_joker_ret.colour = G.C.RED
+                return other_joker_ret
             end
         end
     end
