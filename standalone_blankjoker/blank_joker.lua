@@ -1,6 +1,25 @@
+--- STEAMODDED HEADER
+--- MOD_NAME: Nether's Blank Joker Standalone
+--- MOD_ID: BlankJoker
+--- MOD_AUTHOR: [Nether]
+--- MOD_DESCRIPTION: Add the Blank Joker to the game!
+--- LOADER_VERSION_GEQ: 1.0.0
+--- VERSION: 1.0.0
+
+----------------------------------------------
+------------MOD CODE -------------------------
+
+function is_in_your_collection(card)
+    if not G.your_collection then return false end
+    for i = 1, 3 do
+        if (G.your_collection[i] and card.area == G.your_collection[i]) then return true end
+    end
+    return false
+end
+
 function check_if_copied_joker_is_still_there(card)
     local other_joker = nil
-    if not nether_util.is_in_your_collection(card) and card.ability.extra.copied_joker then
+    if not is_in_your_collection(card) and card.ability.extra.copied_joker then
         -- iterate over G.jokers.cards and find the joker with the same sort_id
         for i = 1, #G.jokers.cards do
             if G.jokers.cards[i].sort_id == card.ability.extra.copied_joker.sort_id then
@@ -68,7 +87,7 @@ SMODS.Joker{
     end,
     loc_vars = function(self, info_queue, card)
         check_if_copied_joker_is_still_there(card)
-        return nether_util.is_in_your_collection(card) and nil or {vars={
+        return is_in_your_collection(card) and nil or {vars={
                 (card.ability.extra.copied_joker and card.ability.extra.copied_joker.name or "None"),
             }}
         end,
@@ -104,7 +123,7 @@ SMODS.Joker{
 
         -- calculate scoring
         if context.joker_main then
-            if not nether_util.is_in_your_collection(card) and card.ability.extra.copied_joker then
+            if not is_in_your_collection(card) and card.ability.extra.copied_joker then
                 local other_joker = nil
                 -- iterate over G.jokers.cards and find the joker with the same sort_id
                 for i = 1, #G.jokers.cards do
