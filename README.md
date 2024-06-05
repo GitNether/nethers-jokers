@@ -9,3 +9,11 @@ No full release of the full mod yet.
 ## Standalones
 
 - [Blank Joker](https://github.com/GitNether/nethers-jokers/releases/tag/blank-joker-standalone) :: This Joker copies the ability of a random blueprint-compatible Joker, changing every blind!
+
+## In Progress
+
+- Masterplan :: This Joker copies the ability of the rightmost Joker (Missing: Artwork)
+
+## Ideas
+
+-
