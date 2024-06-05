@@ -22,7 +22,7 @@ local CONFIG = {
 for key, enabled in pairs(CONFIG) do
     if enabled then
         local path = key:gsub("_", "/")
-        require(SMODS.current_mod.path.."/"..path)
+        require(SMODS.current_mod.path.."/assets/"..path)
         sendDebugMessage("Loaded joker: "..key)
     end
 end
