@@ -16,4 +16,4 @@ No full release of the full mod yet.
 
 ## Ideas
 
--
+- Mismatched Sock ::  Rewards hands with no pairs (High Card, Straight, Flush) (Artwork by @PaperMoon)
